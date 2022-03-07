@@ -8,8 +8,6 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CardWithDelivery {
@@ -30,7 +28,6 @@ public class CardWithDelivery {
         $("[data-test-id='phone'] input").val("+71232135588");
         $("[data-test-id='agreement']>span").click();
         $("[role='button'] span [class='button__text']").click();
-        $(withText("Успешно!")).should(appear, Duration.ofSeconds(15));
         $("[class='notification__content']").shouldHave(Condition.text("Встреча успешно забронирована на " + planningDate), Duration.ofSeconds(15));
     }
 }
